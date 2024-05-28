@@ -1,34 +1,45 @@
-const timer = querySelector('.Timer');
-const iniciar = querySelector('.iniciar');
-const pausar = querySelector('.pausar');
-const zerar = querySelector('.zerar');
+const timer = document.querySelector('.Timer');
+let time = 0;
+let temporizador;
 
+document.addEventListener('click', function(e){
+    const event = e.target;
 
+    if(event.classList.contains('iniciar')) iniciarCronometro();
 
-iniciar.addEventListener('click', iniciarCronometro);
+    else if(event.classList.contains('pausar')){
+        clearInterval(temporizador);
+        timer.classList.add('pausado');
+    }
 
-pausar.addEventListener('click', pausarCronometro)
-
-function pausarCronometro() {
-    setTimeout(function () {}, 1);
-}
+    else if(event.classList.contains('zerar')){
+        clearInterval(temporizador);
+        time = 0;
+        if(timer.classList.contains('pausado')){
+            timer.classList.remove('pausado');
+        }
+        timer.innerText = '00:00:00';
+    }
+})
 
 function iniciarCronometro() {
+    clearInterval(temporizador);
 
-    timer.style.color = 'black';
+    if (timer.classList.contains('pausado')) timer.classList.remove('pausado');
 
-    setInterval(function (cronometro) {
-        timer.textHTML = getHorarioAtual();
-}, 1000);
+    temporizador = setInterval(function () {
+        time++;
+
+        timer.innerHTML = getHorarioAtual(time);
+}, 1000); 
 }
 
-function getHorarioAtual() {
-    const data = new Date();
+function getHorarioAtual(segundos) {
+    const data = new Date(segundos * 1000);
 
-    return data.toLocalTimeString('pt-BR', {hour12: false});
-}
+    return data.toLocaleTimeString('pt-BR', {
+        hour12: false,
+        timeZone: 'UTC'
 
-function gerarParagrafo() {
-    const p = document.createElement('p');
-    return p;
+    });
 }
