@@ -47,4 +47,23 @@ console.log('\n usando o comando split para converter a string anterior em um ar
 sobrenomes.push(nome.split(' '));
 console.log(sobrenomes);
 
+console.log('\n Testando o comando solice.');
+console.log('Breve explicacao sobre o comando: nomeArray.splice([valor do indice para comecar, quantos valores devem ser tirados, ...valores a serem adicionados].');
+console.log('Tirando os o ultimo valor do array nomes e adicionando um novo valor.');
+console.log(nomes);
+console.log(nomes.splice(-1, 1, 'novoNome'));
+console.log(nomes);
 
+console.log('\n Concatenando arrays.');
+console.log('Metodo concat.');
+let nomeSobrenome;
+console.log(nomes);
+console.log(sobrenomes);
+console.log(nomeSobrenome = sobrenomes.concat('nome', nomes));
+console.log('Usando rest ou ...');
+console.log(nomeSobrenome = [...nomes, ...sobrenomes]);
+
+console.log('\n Criando array apenas com as string maiores que 5');
+console.log('Explicando filter: nomeArray.filter([function(valor dos componentes do array, indice, array)] todos esses valores sao dados pelo filter.');
+console.log(nomes);
+console.log(nomes.filter(valor => valor.length > 5));
