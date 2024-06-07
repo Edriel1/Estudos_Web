@@ -67,3 +67,14 @@ console.log('\n Criando array apenas com as string maiores que 5');
 console.log('Explicando filter: nomeArray.filter([function(valor dos componentes do array, indice, array)] todos esses valores sao dados pelo filter.');
 console.log(nomes);
 console.log(nomes.filter(valor => valor.length > 5));
+
+console.log('\n Usando a funcao map.');
+console.log('funciona quase iguala funcao filter, mas retorna os valores alterados.');
+console.log(nomes.map(valor => (valor + 'new')));
+
+console.log('\n Usando a funcao reduce.');
+console.log('funciona quase igual as anteriores, mas tem o atributo acumulador, que e oque vai ser retornado.');
+console.log(nomes.reduce((acumulador, valor) => {
+    acumulador += (' ' + valor);
+    return acumulador;
+}, 'valor inicial do acumulador '));
