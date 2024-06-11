@@ -1,29 +1,28 @@
 function Cpf(valor) {
     let value = valor;
 
-    const validarConstrutor =  (valor) => {if(this.verificarValor(valor))return value = valor;
+    const validarValor =  (valor) => {if(this.verificarValor(valor))return value = valor;
         value = false;
-        console.log('valor invalido');}
-    validarConstrutor(value);
+        }
+    validarValor(value);
 
     Object.defineProperty(this, 'value', {
         enumerable: true,
         configurable: false,
         get: () => value,
-        set: (valor) => {if(this.verificarValor(valor)) return value = valor;
-            value = false;
-            console.log('valor invalido');
-        }
+        set: (valor) => validarValor(valor)
     });
 }
 
+
+
 Cpf.prototype.verificarValor = function (valor = this.value) {
     let valorLimpo = valor.replace(/\D+/g, '');
+    if(!this.uteis.confereValor(valorLimpo)) return false;
     valorLimpo = Array.from(valorLimpo);
-    console.log(valorLimpo);
+
     const valorChecagem = valorLimpo.slice(9, 11);
     valorLimpo = valorLimpo.slice(0, -2);
-    console.log(valorChecagem);
 
     if(!(Number(valorChecagem[0]) === this.uteis.pegaUltimoDoisDigitos(valorLimpo, 1))) return false;
 
@@ -43,15 +42,24 @@ Cpf.prototype.uteis = {
 
     }, 0);
 
-    console.log(somaDigitos);
         return (11 - (somaDigitos % 11));
 
-    }
+    },
+
+    confereValor(valor) {
+    if(valor.length !== 11) return false;
+    if(!valor) return false;
+    if(valor.charAt(0).repeat(valor.length) === valor) return false;
+    if(typeof valor !== 'string') return false;
+    return true;
+}
+
 }
 
 //Testando objeto
-//const CPF = new Cpf('115.921.984-22');
-//console.log(CPF.value);
-//console.log(CPF.verificarValor('123.123.123-11'));
-//CPF.value = '115.921.984-22';
-//console.log(CPF.verificarValor('115.921.984-22'));
+const CPF = new Cpf('115.921.984-22');
+console.log(CPF.value);
+console.log(CPF.verificarValor('123.123.123-11'));
+CPF.value = '115.921.984-22';
+console.log(CPF.verificarValor('115.921.984-22'));
+console.log(CPF.verificarValor('111.111.111-11'));
