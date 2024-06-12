@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validando formulario</title>
+    <link rel="stylesheet" href="CSS/main.css">
+</head>
+<body>
+    <div class="conteiner">
+    <h1>Validando Formulario</h1>
+
+    <ul>
+        <li><h3>Nenhum campo pode estar vazio</h3></li>
+        <li><h3>Usuario so pode ter letras e/ou numero</h3></li>
+        <li><h3>Usuario devera ter entre 3 e 12 caracteres</h3></li>
+        <li><h3>Senha precisa ter entre 6 e 12 caracteres</h3></li>
+    </ul>
+
+    <form class="formulario" method="POST" action="/">
+        <label>Nome:</label>
+        <input type="text" class="nome">
+        <label>Sobrenome:</label>
+        <input type="text" class="sobrenome">
+        <label>CPF:</label>
+        <input type="text" class="cpf">
+        <label>Senha:</label>
+        <input type="text" class="senha">
+        <label>Repetir senha:</label>
+        <input type="text" class="repetir_senha">
+        <button class="enviar">Enviar</button>
+    </form>
+    </div>
+
+
+    <script src="JS/main.js"></script>
+</body>
+</html>
