@@ -21,3 +21,8 @@ button {
     font-size: 2em; 
     margin: 10px 25%;
 }
+
+.mensagem_erro {
+    color: red;
+    font-size: 12px;
+}
