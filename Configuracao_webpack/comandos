@@ -1,0 +1,7 @@
+npm init -y
+npm i --save-dev @babel/preset-env @babel/cli @babel/core babel-loader webpack webpack-cli regenerator-runtime core-js@2
+(apagar as chaves core-js e regenerator-runtime, para tiralas de devcomponents para somente componentes)
+npm i core-js regenerator-runtime
+npm install style-loader css-loader
+
+(npm install)
