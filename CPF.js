@@ -41,8 +41,10 @@ Cpf.prototype.uteis = {
         return acumulador;
 
     }, 0);
+    
+        somaDigitos = (11 - (somaDigitos % 11));
 
-        return (11 - (somaDigitos % 11));
+        return somaDigitos > 9? 0 : somaDigitos;
 
     },
 
@@ -57,9 +59,11 @@ Cpf.prototype.uteis = {
 }
 
 //Testando objeto
-const CPF = new Cpf('115.921.984-22');
-console.log(CPF.value);
-console.log(CPF.verificarValor('123.123.123-11'));
-CPF.value = '115.921.984-22';
-console.log(CPF.verificarValor('115.921.984-22'));
-console.log(CPF.verificarValor('111.111.111-11'));
+// const CPF = new Cpf('388.147.882-51');
+// console.log(CPF.value);
+// console.log(CPF.verificarValor('123.123.123-11'));
+// CPF.value = '388.147.882-51';
+// console.log(CPF.verificarValor('388.147.882-51'));
+// console.log(CPF.verificarValor('111.111.111-11'));
+
+export default Cpf;

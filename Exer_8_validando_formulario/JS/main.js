@@ -1,4 +1,3 @@
-//import {Cpf} from "../../CPF.js";
 
 class ValidaFormulario{
     constructor(){
